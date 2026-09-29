@@ -9,7 +9,7 @@ import { format, startOfWeek, addDays } from 'date-fns';
 
 export default function WeeklyPage() {
   const { weeklyTasks, addWeeklyTask, toggleWeeklyTask, deleteWeeklyTask } = useStore();
-  const [weekStart, setWeekStart] = useState(startOfWeek(new Date(), { weekStartsOn: 1 }));
+  const [weekStart, setWeekStart] = useState(() => startOfWeek(new Date(), { weekStartsOn: 1 }));
   const [newTask, setNewTask] = useState('');
 
   const weekDates = useMemo(() => {

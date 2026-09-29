@@ -4,14 +4,14 @@ import { format, getDaysInMonth } from 'date-fns';
 
 export function HabitGrid() {
   const { habits, habitLogs, toggleHabitLog } = useStore();
-  const [currentDate] = useState(new Date());
-  const daysInMonth = getDaysInMonth(currentDate);
+  const [currentDate] = useState(() => new Date());
+  const daysInMonth = useMemo(() => getDaysInMonth(currentDate), [currentDate]);
 
   const dates = useMemo(() => {
-    return Array.from({ length: daysInMonth }, (_, i) => 
+    return Array.from({ length: daysInMonth }, (_, i) =>
       format(new Date(currentDate.getFullYear(), currentDate.getMonth(), i + 1), 'yyyy-MM-dd')
     );
-  }, [currentDate]);
+  }, [currentDate, daysInMonth]);
 
   return (
     <div className="overflow-x-auto pb-4">
