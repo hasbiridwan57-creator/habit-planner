@@ -17,8 +17,12 @@ function App() {
     } else if (theme === 'light') {
       root.classList.remove('dark');
     } else {
-      const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      root.classList.toggle('dark', isDark);
+      // system
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
     }
   }, [theme]);
 
