@@ -29,7 +29,7 @@ function App() {
   }, [resetToDemoData]);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 transition-colors">
+    <div className="min-h-screen bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 transition-colors flex flex-col">
       <header className="sticky top-0 z-50 border-b border-neutral-200 dark:border-neutral-800 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 font-bold tracking-tight">
@@ -37,12 +37,8 @@ function App() {
             <span className="hidden sm:block text-sm uppercase tracking-[0.2em]">Habit Planner</span>
           </Link>
           <nav className="flex items-center gap-1">
-            <Link to="/habits" className="hidden sm:block px-3 py-1.5 text-sm rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors">
-              Habits
-            </Link>
-            <Link to="/weekly" className="hidden sm:block px-3 py-1.5 text-sm rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors">
-              Weekly
-            </Link>
+            <Link to="/habits" className={`px-3 py-1.5 text-sm rounded-md transition-colors ${location.pathname.includes('habits') ? 'bg-neutral-100 dark:bg-neutral-900 font-medium' : 'hover:bg-neutral-100 dark:hover:bg-neutral-900'}`}>Habits</Link>
+            <Link to="/weekly" className={`px-3 py-1.5 text-sm rounded-md transition-colors ${location.pathname.includes('weekly') ? 'bg-neutral-100 dark:bg-neutral-900 font-medium' : 'hover:bg-neutral-100 dark:hover:bg-neutral-900'}`}>Weekly</Link>
             <ThemeToggle theme={theme} setTheme={setTheme} />
           </nav>
         </div>
